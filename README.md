@@ -1,4 +1,4 @@
-[![Travis Ci](https://travis-ci.org/Fakerino/Fakerino.svg?branch=master)](https://travis-ci.org/Fakerino/Fakerino)
+[![Travis Ci](https://travis-ci.org/kix/apiranha.svg?branch=master)](https://travis-ci.org/Fakerino/Fakerino)
 [![Code Climate](https://codeclimate.com/github/kix/apiranha/badges/gpa.svg)](https://codeclimate.com/github/kix/apiranha)
 
 # Resource definitions
