@@ -1,0 +1,13 @@
+{
+    "name": "kix/apiranha",
+    "description": "An API client for PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stepan Anchugov",
+            "email": "kixxx1@gmail.com"
+        }
+    ],
+    "require": {}
+}
