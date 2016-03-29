@@ -1,3 +1,6 @@
+[![Travis Ci](https://travis-ci.org/Fakerino/Fakerino.svg?branch=master)](https://travis-ci.org/Fakerino/Fakerino)
+[![Code Climate](https://codeclimate.com/github/kix/apiranha/badges/gpa.svg)](https://codeclimate.com/github/kix/apiranha)
+
 # Resource definitions
 
 For each resource, you need to create a `ResourceDefinition`:
