@@ -1,0 +1,4 @@
+vendor/
+apidoc/
+phpunit.xml
+/.phpunit
