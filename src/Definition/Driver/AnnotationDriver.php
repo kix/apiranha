@@ -105,9 +105,12 @@ class AnnotationDriver
                 
                 if ($annotation instanceof Annotation\Returns) {
                     // @TODO: check for scalar types
-                    // @TODO: add an exception message
                     if (!class_exists($annotation->value)) {
-                        throw new \RuntimeException();
+                        throw new InvalidArgumentException(sprintf(
+                            'Class `%s` declared as return type for `%s`, but it does not exist',
+                            $reflection->getName().'#'.$methodRefl->getName(),
+                            $annotation->value
+                        ));
                     }
                     
                     $returnType = $annotation->value;
@@ -122,11 +125,17 @@ class AnnotationDriver
             }
 
             if (!$path) {
-                throw new \RuntimeException();
+                throw new RuntimeException(sprintf(
+                    'Path was not declared for method %s',
+                    $reflection->getName().'#'.$methodRefl->getName()
+                ));
             }
 
             if (!$method) {
-                throw new \RuntimeException();
+                throw new RuntimeException(sprintf(
+                    'API method was not declared for method %s',
+                    $reflection->getName().'#'.$methodRefl->getName()
+                ));
             }
 
             if (count($parameters) === 0) {
