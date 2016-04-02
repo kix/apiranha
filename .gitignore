@@ -2,3 +2,4 @@ vendor/
 apidoc/
 phpunit.xml
 /.phpunit
+composer.lock
