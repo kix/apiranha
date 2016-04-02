@@ -24,7 +24,8 @@
         "symfony/serializer": "@stable"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.2"
+        "phpunit/phpunit": "~5.2",
+        "doctrine/orm": "^2.5"
     },
     "suggest": {
         "nikic/php-parser": "Allows dumping definitions to PHP code"
