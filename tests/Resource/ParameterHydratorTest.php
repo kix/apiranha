@@ -33,11 +33,10 @@ class ParameterHydratorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException \Kix\Apiranha\Exception\InvalidParameterException
      */
     public function it_throws_for_scalar_type_mismatch()
     {
-        $this->expectException(InvalidParameterException::class);
-
         $defns = [new ParameterDefinition('userId', 'int', true)];
 
         ParameterHydrator::hydrateParameters($defns, ['lalala']);
@@ -45,11 +44,10 @@ class ParameterHydratorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException \Kix\Apiranha\Exception\InvalidParameterException
      */
     public function it_throws_for_object_class_mismatch()
     {
-        $this->expectException(InvalidParameterException::class);
-
         $defns = [new ParameterDefinition('user', User::class, true)];
 
         ParameterHydrator::hydrateParameters($defns, [new Book()]);

@@ -82,11 +82,10 @@ class AnnotationDriverTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException \Kix\Apiranha\Exception\InvalidResourceDefinitionException
      */
     public function it_throws_for_bad_parameter_property_paths()
     {
-        $this->expectException(InvalidResourceDefinitionException::class);
-
         $driver = new AnnotationDriver();
         $definitions = $driver->createDefinitions(BrokenResource::class);
     }

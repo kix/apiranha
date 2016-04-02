@@ -26,11 +26,10 @@ class ParameterDefinitionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException \Kix\Apiranha\Exception\InvalidArgumentException
      */
     public function it_throws_for_unsupported_types()
     {
-        $this->expectException(InvalidArgumentException::class);
-
         $defn = new ParameterDefinition(
             'param',
             'jibberish',

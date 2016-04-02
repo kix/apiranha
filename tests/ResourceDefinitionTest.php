@@ -28,11 +28,10 @@ class ResourceDefinitionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException \Kix\Apiranha\Exception\InvalidArgumentException
      */
     public function it_throws_for_nonexistent_classes_as_return_type()
     {
-        $this->expectException(InvalidArgumentException::class);
-
         $defn = new ResourceDefinition(
             'listUsers',
             ResourceDefinitionInterface::METHOD_GET,
@@ -43,11 +42,10 @@ class ResourceDefinitionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException \Kix\Apiranha\Exception\InvalidArgumentException
      */
     public function it_throws_for_non_supported_methods()
     {
-        $this->expectException(InvalidArgumentException::class);
-        
         $defn = new ResourceDefinition(
             'listUsers',
             'OPTIONS',
