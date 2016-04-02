@@ -44,11 +44,11 @@ class ParameterDefinition implements ParameterDefinitionInterface
      */
     private function setType($type)
     {
-        if (!in_array($type, ['string', 'int', 'bool'], true) && !class_exists($type)) {
+        if (!in_array($type, ['string', 'int', 'integer', 'bool'], true) && !class_exists($type)) {
             throw new InvalidArgumentException(sprintf(
                 'Type `%s` is not supported, or the class does not exist. Check the class name or try one of: %s',
                 $type,
-                implode(', ', ['string', 'int', 'bool'])
+                implode(', ', ['string', 'int','integer', 'bool'])
             ));
         }
 
