@@ -61,6 +61,7 @@ class ResourceDefinition implements ResourceDefinitionInterface
      *
      * @throws InvalidArgumentException for bad parameters
      * @throws InvalidResourceDefinitionException
+     * @throws InvalidParameterDefinitionException
      */
     public function __construct($name, $method, $path, $returnType = null, array $parameters = array())
     {
@@ -76,6 +77,10 @@ class ResourceDefinition implements ResourceDefinitionInterface
             $this->parameters = self::processParameters($path, $parameters);
         } catch (InvalidResourceDefinitionException $e) {
             throw new InvalidResourceDefinitionException(
+                $e->getMessage() . sprintf(' in %s (%s %s)', $this->name, $this->method, $this->path)
+            );
+        } catch (InvalidParameterDefinitionException $e) {
+            throw new InvalidParameterDefinitionException(
                 $e->getMessage() . sprintf(' in %s (%s %s)', $this->name, $this->method, $this->path)
             );
         }
@@ -110,8 +115,7 @@ class ResourceDefinition implements ResourceDefinitionInterface
 
         foreach ($pathParams as $pathParam) {
             $exploded = explode('.', $pathParam, 2);
-            $root = $exploded[0];
-            $propPath = $exploded[1];
+            list($root, $propPath) = $exploded;
 
             if (!PropertyAccess::isPathAccessible($result[$root]->getType(), $propPath)) {
                 throw new InvalidResourceDefinitionException(sprintf(
