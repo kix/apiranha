@@ -6,6 +6,8 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Kix\Apiranha\Annotation;
 use Kix\Apiranha\Exception\InvalidArgumentException;
 use Kix\Apiranha\Exception\InvalidResourceDefinitionException;
+use Kix\Apiranha\Exception\LogicException;
+use Kix\Apiranha\Exception\RuntimeException;
 use Kix\Apiranha\ParameterDefinition;
 use Kix\Apiranha\ResourceDefinition;
 use Kix\Apiranha\ResourceDefinitionInterface;
@@ -51,9 +53,9 @@ class AnnotationDriver
      * @param string $source Name of the interface to create definitions from.
      *
      * @TODO: use own exceptions instead:
-     * @throws \InvalidArgumentException
-     * @throws \LogicException
-     * @throws \RuntimeException
+     * @throws InvalidArgumentException
+     * @throws LogicException
+     * @throws RuntimeException
      *
      * @TODO: Rethrow, process?
      * @throws InvalidArgumentException
@@ -64,14 +66,14 @@ class AnnotationDriver
     public function createDefinitions($source)
     {
         if (!interface_exists($source)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Class or interface `%s` is specified as a resource definition source, but it doesn\'t exist',
                 $source
             ));
         }
 
         if (class_exists($source)) {
-            throw new \LogicException(sprintf(
+            throw new LogicException(sprintf(
                 'A resource should be defined over an interface, not over a class (as in %s), because we cannot '.
                 'use its implementation.',
                 $source
@@ -92,7 +94,7 @@ class AnnotationDriver
             foreach ($annotations as $annotation) {
                 if ($annotation instanceof Annotation\Method) {
                     if ($method) {
-                        throw new \RuntimeException(sprintf(
+                        throw new RuntimeException(sprintf(
                             'Multiple method declarations are not supported, but were declared on `%s`',
                             $methodRefl->class.'#'.$methodRefl->getName()    
                         ));
@@ -104,7 +106,7 @@ class AnnotationDriver
                 
                 if ($annotation instanceof Annotation\Returns) {
                     // @TODO: check for scalar types
-                    // @TODO: subclass and add an exception message
+                    // @TODO: add an exception message
                     if (!class_exists($annotation->value)) {
                         throw new \RuntimeException();
                     }
@@ -150,7 +152,12 @@ class AnnotationDriver
 
             if (method_exists($methodRefl, 'getReturnType') && $methodRefl->getReturnType()) {
                 if ($returnType && $returnType !== $methodRefl->getReturnType()) {
-                    // @TODO: throw an exception saying these things ^^ are different
+                    throw new LogicException(sprintf(
+                        'Method `%s`\'s return type (%s) does not match the annotated one, which is %s',
+                        $methodRefl->getName(),
+                        $methodRefl->getReturnType(),
+                        $returnType
+                    ));
                 }
                 
                 $returnType = $methodRefl->getReturnType();

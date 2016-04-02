@@ -125,8 +125,7 @@ class ResourceDefinition implements ResourceDefinitionInterface
                 ));
             }
         }
-        // TODO: Check for key validity
-        
+
         return $result;
     }
     

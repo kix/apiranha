@@ -101,8 +101,6 @@ class Endpoint
     }
 
     /**
-     * @TODO: Remove this in favour of a regular event listener
-     *
      * @param string $type
      * @param callable $listener
      */
