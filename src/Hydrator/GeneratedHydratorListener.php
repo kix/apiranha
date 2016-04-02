@@ -3,16 +3,26 @@
 namespace Kix\Apiranha\Hydrator;
 
 use GeneratedHydrator\Configuration;
+use Kix\Apiranha\Exception\InvalidArgumentException;
+use Kix\Apiranha\Listener\AfterDataListener;
 use Kix\Apiranha\ResourceDefinitionInterface;
 use Kix\Apiranha\Response\ApiResponse;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class GeneratedHydratorListener
  */
-class GeneratedHydratorListener 
+class GeneratedHydratorListener implements AfterDataListener
 {
-    public function process(ApiResponse $response, ResourceDefinitionInterface $resource)
+    public function process(ResponseInterface $response, ResourceDefinitionInterface $resource)
     {
+        if (!$response instanceof ApiResponse) {
+            throw new InvalidArgumentException(sprintf(
+                'Expected an `ApiResponse`, got `%s` instead',
+                get_class($response)
+            ));
+        }
+
         $returnType = $resource->getReturnType();
         $config = new Configuration($returnType);
         $hydratorClass = $config->createFactory()->getHydratorClass();

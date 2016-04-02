@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * A listener is able to hook up into different aspects of Apiranha's work. 
  */
-interface ListenerInterface
+interface AfterResponseListener
 {
     /**
      * A listener should accept a request and a response. Instead of modifying the original request's state, listeners
