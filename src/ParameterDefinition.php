@@ -51,7 +51,7 @@ class ParameterDefinition implements ParameterDefinitionInterface
                 implode(', ', ['string', 'int', 'bool'])
             ));
         }
-        
+
         $this->type = $type;
     }
 
