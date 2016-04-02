@@ -49,10 +49,16 @@ class Endpoint
      * data depending on response headers of the kind of the request.
      */
     const LISTENER_AFTER_RESPONSE = 'after_response';
+
+    /**
+     * <code>after_data</code> listeners receive decoded (deserialized) response data.
+     */
+    const LISTENER_AFTER_DATA = 'after_data';
     
     private $listeners = [
         self::LISTENER_BEFORE_REQUEST => [],
         self::LISTENER_AFTER_RESPONSE => [],
+        self::LISTENER_AFTER_DATA => [],
     ];
 
     /**
@@ -146,32 +152,15 @@ class Endpoint
             }
         }
 
-        $returnType = $resource->getReturnType();
-
-        $config = new Configuration($resource->getReturnType());
-        $hydratorClass = $config->createFactory()->getHydratorClass();
-        $hydrator = new $hydratorClass();
-        $object = new $returnType();
-
-        if ($resource->getMethod() !== ResourceDefinitionInterface::METHOD_CGET) {
-            return $hydrator->hydrate(
-                $response->getData(),
-                $object
-            );
+        foreach ($this->listeners[self::LISTENER_AFTER_DATA] as $listener) {
+            if (is_callable($listener)) {
+                return $listener($response, $resource);
+            } else {
+                return $listener->process($response, $resource);
+            }
         }
 
-        $result = [];
-
-        foreach ($response->getData() as $item) {
-            $current = clone $object;
-
-            $result []= $hydrator->hydrate(
-                $item,
-                $current
-            );
-        }
-
-        return $result;
+        throw new \RuntimeException('No hydrators :(');
     }
 
 }
