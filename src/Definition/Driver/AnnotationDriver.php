@@ -36,7 +36,7 @@ use Kix\Apiranha\ResourceDefinitionInterface;
  */
 class AnnotationDriver
 {
-    const ANNOTATION_METHOD_MAP = [
+    private static $annotationMethodMap = [
         Annotation\CGet::class => ResourceDefinitionInterface::METHOD_CGET,
         Annotation\Get::class => ResourceDefinitionInterface::METHOD_GET,
         Annotation\Delete::class => ResourceDefinitionInterface::METHOD_DELETE,
@@ -52,7 +52,6 @@ class AnnotationDriver
      *
      * @param string $source Name of the interface to create definitions from.
      *
-     * @TODO: use own exceptions instead:
      * @throws InvalidArgumentException
      * @throws LogicException
      * @throws RuntimeException
@@ -100,7 +99,7 @@ class AnnotationDriver
                         ));
                     }
                     
-                    $method = static::ANNOTATION_METHOD_MAP[get_class($annotation)];
+                    $method = static::$annotationMethodMap[get_class($annotation)];
                     $path = $annotation->value;
                 }
                 
