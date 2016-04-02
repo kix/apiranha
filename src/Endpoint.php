@@ -3,6 +3,7 @@
 namespace Kix\Apiranha;
 
 use Kix\Apiranha\Exception\LogicException;
+use Kix\Apiranha\HttpAdapter\HttpAdapterInterface;
 use Kix\Apiranha\Listener\AfterDataListener;
 use Kix\Apiranha\Request\Request;
 use Kix\Apiranha\Listener\AfterResponseListener;
@@ -35,9 +36,9 @@ class Endpoint
     private $router;
 
     /**
-     * @var
+     * @var HttpAdapterInterface
      */
-    private $client;
+    private $httpAdapter;
 
     /**
      * <code>before_request</code> listeners can be used to populate a <code>Request</code> with headers or modified
@@ -70,17 +71,15 @@ class Endpoint
      * $endpoint = new Endpoint('http://api.twitter.com');
      * </pre>
      *
+     * @param HttpAdapterInterface $httpAdapter
      * @param string $baseUrl
      */
-    public function __construct($baseUrl)
+    public function __construct(HttpAdapterInterface $httpAdapter, Router $router, $baseUrl)
     {
         $this->baseUrl = $baseUrl;
-        $this->router = new Router();
+        $this->router = $router;
         $this->resources = [];
-        $this->client = new Client([
-            'base_uri' => $baseUrl,
-            'http_errors' => false,
-        ]);
+        $this->httpAdapter = $httpAdapter;
     }
 
     /**
@@ -128,7 +127,7 @@ class Endpoint
         }
         
         $resource = $this->resources[$name];
-        $uri = $this->router->generate($resource, ParameterHydrator::hydrateParameters($resource->getParameters(), $arguments));
+        $uri = $this->baseUrl.$this->router->generate($resource, ParameterHydrator::hydrateParameters($resource->getParameters(), $arguments));
 
         $request = new Request($resource->getMethod(), $uri);
         
@@ -139,7 +138,7 @@ class Endpoint
             } 
         }
 
-        $response = $this->client->send($request);
+        $response = $this->httpAdapter->send($request);
 
         foreach ($this->listeners[self::LISTENER_AFTER_RESPONSE] as $listener) {
             if (is_callable($listener)) {

@@ -2,6 +2,8 @@
 
 namespace Tests\Kix\Apiranha;
 
+use Kix\Apiranha\HttpAdapter\HttpAdapterInterface;
+use Kix\Apiranha\Router;
 use Kix\Apiranha\Tests\Mocks\User;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
@@ -20,7 +22,7 @@ class EndpointTest extends \PHPUnit_Framework_TestCase
      */
     public function it_is_initializable()
     {
-        $endpoint = new Endpoint('http://localhost:8000');
-        
+        $adapter = $this->getMock(HttpAdapterInterface::class);
+        $endpoint = new Endpoint($adapter, new Router(), 'http://localhost:8000');
     }
 }
