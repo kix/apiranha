@@ -17,7 +17,7 @@ class Request extends GuzzleRequest
      * Resource methods map to HTTP methods so that <code>CGET</code> is transformed to <code>GET</code>. All other
      * methods map one-to-one.
      */
-    const METHOD_MAP = [
+    private static $methodMap = [
         ResourceDefinitionInterface::METHOD_CGET => 'GET',
         ResourceDefinitionInterface::METHOD_DELETE => 'DELETE',
         ResourceDefinitionInterface::METHOD_GET => 'GET',
@@ -36,6 +36,6 @@ class Request extends GuzzleRequest
      */
     public function __construct($method, $uri, array $headers = [], $body = null, $protocolVersion = '1.1')
     {
-        parent::__construct(self::METHOD_MAP[$method], $uri, $headers, $body, $protocolVersion);
+        parent::__construct(self::$methodMap[$method], $uri, $headers, $body, $protocolVersion);
     }
 }

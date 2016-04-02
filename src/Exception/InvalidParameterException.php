@@ -7,7 +7,7 @@ namespace Kix\Apiranha\Exception;
  */
 class InvalidParameterException extends InvalidArgumentException
 {
-    const SCALAR_TYPES = ['int', 'integer', 'float', 'long', 'bool', 'boolean', 'string', 'array'];
+    public static $scalarTypes = ['int', 'integer', 'float', 'long', 'bool', 'boolean', 'string', 'array'];
 
     /**
      * Thrown when a parameter passed to a <code>ParameterDefinition</code> does not comply with the definition's 
@@ -24,14 +24,14 @@ class InvalidParameterException extends InvalidArgumentException
         
         if (is_array($expected)) {
             foreach ($expected as $item) {
-                if (in_array($item, self::SCALAR_TYPES, true)) {
+                if (in_array($item, self::$scalarTypes, true)) {
                     $expectedTypes []= $item;
                 } elseif (class_exists($item)) {
                     $expectedClasses []= $item;
                 }
             }
         } else {
-            if (in_array($expected, self::SCALAR_TYPES, true)) {
+            if (in_array($expected, self::$scalarTypes, true)) {
                 $expectedTypes []= $expected;
             } elseif (class_exists($expected)) {
                 $expectedClasses []= $expected;
