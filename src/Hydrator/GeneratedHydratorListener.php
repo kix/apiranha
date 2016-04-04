@@ -4,15 +4,15 @@ namespace Kix\Apiranha\Hydrator;
 
 use GeneratedHydrator\Configuration;
 use Kix\Apiranha\Exception\InvalidArgumentException;
-use Kix\Apiranha\Listener\AfterDataListener;
+use Kix\Apiranha\Listener\AfterDataListenerInterface;
 use Kix\Apiranha\ResourceDefinitionInterface;
 use Kix\Apiranha\Response\ApiResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class GeneratedHydratorListener
+ * Class GeneratedHydratorListenerInterface
  */
-class GeneratedHydratorListener implements AfterDataListener
+class GeneratedHydratorListener implements AfterDataListenerInterface
 {
     public function process(ResponseInterface $response, ResourceDefinitionInterface $resource)
     {

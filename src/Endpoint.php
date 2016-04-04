@@ -4,12 +4,10 @@ namespace Kix\Apiranha;
 
 use Kix\Apiranha\Exception\LogicException;
 use Kix\Apiranha\HttpAdapter\HttpAdapterInterface;
-use Kix\Apiranha\Listener\AfterDataListener;
+use Kix\Apiranha\Listener\AfterDataListenerInterface;
 use Kix\Apiranha\Request\Request;
-use Kix\Apiranha\Listener\AfterResponseListener;
-use GuzzleHttp\Client;
+use Kix\Apiranha\Listener\AfterResponseListenerInterface;
 use Kix\Apiranha\Exception\UndefinedResourceException;
-use GeneratedHydrator\Configuration;
 use Kix\Apiranha\Resource\ParameterHydrator;
 
 /**
@@ -141,7 +139,7 @@ class Endpoint
         foreach ($this->listeners[self::LISTENER_AFTER_RESPONSE] as $listener) {
             if (is_callable($listener)) {
                 $result = $listener($request, $response);
-            } elseif ($listener instanceof AfterResponseListener) {
+            } elseif ($listener instanceof AfterResponseListenerInterface) {
                 $result = $listener->process($request, $response);
             }
             
@@ -153,7 +151,7 @@ class Endpoint
         foreach ($this->listeners[self::LISTENER_AFTER_DATA] as $listener) {
             if (is_callable($listener)) {
                 return $listener($response, $resource);
-            } elseif ($listener instanceof AfterDataListener) {
+            } elseif ($listener instanceof AfterDataListenerInterface) {
                 return $listener->process($response, $resource);
             }
         }

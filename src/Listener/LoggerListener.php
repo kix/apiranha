@@ -3,7 +3,6 @@
 namespace Kix\Apiranha\Listener;
 
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use Psr\Log\LoggerInterface;
 
 /**

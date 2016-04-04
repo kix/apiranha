@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Serializer;
 /**
  * Class ContentTypeListenener
  */
-class ContentTypeListenener implements AfterResponseListener
+class ContentTypeListenener implements AfterResponseListenerInterface
 {
     /**
      * @var Serializer
