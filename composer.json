@@ -17,15 +17,18 @@
     },
     "require": {
         "guzzlehttp/guzzle": "^6.2",
-        "nikic/php-parser": "~2.0.0",
         "doctrine/annotations": "@stable",
-        "symfony/property-access": "@stable",
-        "symfony/serializer": "@stable"
+        "symfony/property-access": "@stable"
     },
     "require-dev": {
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "symfony/serializer": "@stable",
+        "jms/serializer": "@stable",
+        "nikic/php-parser": "@stable"
     },
     "suggest": {
-        "nikic/php-parser": "Allows dumping definitions to PHP code"
+        "nikic/php-parser": "Allows dumping definitions to PHP code",
+        "symfony/serializer": "Adds support for (de)serializing common formats",
+        "jms/serializer": "Adds support for (de)serializing common formats"
     }
 }
