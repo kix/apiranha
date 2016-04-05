@@ -24,7 +24,8 @@
         "phpunit/phpunit": "@stable",
         "symfony/serializer": "@stable",
         "jms/serializer": "@stable",
-        "nikic/php-parser": "@stable"
+        "nikic/php-parser": "@stable",
+        "guzzlehttp/guzzle": "@stable"
     },
     "suggest": {
         "nikic/php-parser": "Allows dumping definitions to PHP code",
