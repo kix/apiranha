@@ -3,3 +3,4 @@ apidoc/
 phpunit.xml
 /.phpunit
 composer.lock
+ocular.phar
