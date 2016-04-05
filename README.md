@@ -1,5 +1,6 @@
 [![Travis Ci](https://travis-ci.org/kix/apiranha.svg?branch=master)](https://travis-ci.org/Fakerino/Fakerino)
 [![Code Climate](https://codeclimate.com/github/kix/apiranha/badges/gpa.svg)](https://codeclimate.com/github/kix/apiranha)
+[![Coverage Status](https://coveralls.io/repos/github/kix/apiranha/badge.svg?branch=master)](https://coveralls.io/github/kix/apiranha?branch=master)
 
 # Resource definitions
 
