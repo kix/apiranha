@@ -26,7 +26,7 @@ class ParameterHydrator
             if (in_array($parameterDefinition->getType(), InvalidParameterException::$scalarTypes, true)) {
                 $validator = 'is_'.$parameterDefinition->getType();
                 if (!$validator($arguments[$i])) {
-                    throw InvalidParameterException::forTypeMismatch(['string', 'int', 'bool'], $arguments[$i]);
+                    throw InvalidParameterException::forTypeMismatch(['string', 'int', 'integer', 'bool'], $arguments[$i]);
                 }
             } else {
                 $class = $parameterDefinition->getType();
