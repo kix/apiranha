@@ -12,7 +12,8 @@
     "autoload": {
         "psr-4": { 
             "Kix\\Apiranha\\": "src/",
-            "Kix\\Apiranha\\Tests\\": "tests/"
+            "Kix\\Apiranha\\Tests\\": "tests/",
+            "Kix\\Apiranha\\Examples\\": "examples/"
         }
     },
     "require": {
@@ -25,7 +26,9 @@
         "symfony/serializer": "@stable",
         "jms/serializer": "@stable",
         "nikic/php-parser": "@stable",
-        "guzzlehttp/guzzle": "@stable"
+        "guzzlehttp/guzzle": "@stable",
+        "sstalle/php7cc": "^1.1",
+        "symfony/console": "^3.1"
     },
     "suggest": {
         "nikic/php-parser": "Allows dumping definitions to PHP code",

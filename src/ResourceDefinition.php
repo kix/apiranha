@@ -183,7 +183,7 @@ class ResourceDefinition implements ResourceDefinitionInterface
             }
             
             throw new InvalidArgumentException(sprintf(
-                'Class `%s` declared as return type %sdoes not exist',
+                'Class `%s` declared as return type %s does not exist',
                 $returnType,
                 $forResource
             ));

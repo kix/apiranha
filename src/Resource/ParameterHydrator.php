@@ -2,6 +2,7 @@
 
 namespace Kix\Apiranha\Resource;
 
+use Kix\Apiranha\Exception\RuntimeException;
 use Kix\Apiranha\ParameterDefinitionInterface;
 use Kix\Apiranha\Exception\InvalidParameterException;
 
@@ -23,13 +24,22 @@ class ParameterHydrator
         $parameters = [];
 
         foreach ($definitions as $parameterDefinition) {
-            if (in_array($parameterDefinition->getType(), InvalidParameterException::$scalarTypes, true)) {
-                $validator = 'is_'.$parameterDefinition->getType();
+            $type = $parameterDefinition->getType();
+
+            if (in_array($type, InvalidParameterException::$scalarTypes, true)) {
+                $validator = 'is_'.$type;
                 if (!$validator($arguments[$i])) {
                     throw InvalidParameterException::forTypeMismatch(['string', 'int', 'integer', 'bool'], $arguments[$i]);
                 }
             } else {
-                $class = $parameterDefinition->getType();
+                $class = $type;
+
+                if (!class_exists($class)) {
+                    throw new RuntimeException(sprintf(
+                        'Class `%s` does not exist',
+                        $class
+                    ));
+                }
 
                 if (!$arguments[$i] instanceof $class) {
                     throw InvalidParameterException::forTypeMismatch($class, $arguments[$i]);

@@ -2,6 +2,7 @@
 
 namespace Kix\Apiranha\Serializer;
 
+use Kix\Apiranha\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Serializer;
 
 /**
@@ -26,6 +27,13 @@ class SymfonySerializerAdapter extends AbstractSerializerAdapter implements Seri
      */
     public function decode($contentType, $data)
     {
+        if (!array_key_exists($contentType, $this->formats)) {
+            throw new InvalidArgumentException(sprintf(
+                'Content-type `%s` cannot be deserialized.',
+                $contentType
+            ));
+        }
+
         return $this->serializer->decode($data, $this->formats[$contentType]);
     }
 

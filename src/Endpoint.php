@@ -100,7 +100,7 @@ class Endpoint
 
     /**
      * @param string $type
-     * @param callable $listener
+     * @param mixed|callable $listener
      */
     public function addListener($type, $listener)
     {

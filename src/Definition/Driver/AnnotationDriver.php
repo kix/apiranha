@@ -143,11 +143,19 @@ class AnnotationDriver
                     $type = null;
 
                     if (method_exists($parameter, 'getType') && $parameter->hasType()) {
-                        $type = $parameter->getType();
+                        $type = (string) $parameter->getType();
                     }
 
                     if ($parameter->getClass()) {
                         $type = $parameter->getClass()->name;
+                    }
+
+                    if (!$type) {
+                        throw new RuntimeException(sprintf(
+                            'Could not determine a type for parameter `%s` of method `%s`',
+                            $parameter->getName(),
+                            $methodRefl->getDeclaringClass().'::'.$methodRefl->getName()
+                        ));
                     }
 
                     $parameters []= new ParameterDefinition(
@@ -170,7 +178,7 @@ class AnnotationDriver
                 
                 $returnType = $methodRefl->getReturnType();
             }
-            
+
             $definitions [$methodRefl->getName()]= new ResourceDefinition(
                 $methodRefl->getName(),
                 $method,
