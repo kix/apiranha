@@ -11,6 +11,9 @@ use Psr\Http\Message\ResponseInterface;
  */
 class GuzzleHttpAdapter implements HttpAdapterInterface
 {
+    /**
+     * @var ClientInterface
+     */
     private $client;
 
     /**

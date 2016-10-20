@@ -2,8 +2,6 @@
 
 namespace Kix\Apiranha\Annotation;
 
-use Doctrine\Common\Annotations\Annotation;
-
 /**
  * Single resource GET annotation
  * 

@@ -5,9 +5,9 @@ namespace Kix\Apiranha;
 /**
  * Class Client
  */
-class Client
+class Builder
 {
-    public static function factory()
+    public static function createClient()
     {
         
     }

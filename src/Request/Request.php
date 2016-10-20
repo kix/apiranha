@@ -2,40 +2,65 @@
 
 namespace Kix\Apiranha\Request;
 
-use \GuzzleHttp\Psr7\Request as GuzzleRequest;
+use Symfony\Component\EventDispatcher\Event;
+use Kix\Apiranha\Endpoint;
+use Kix\Apiranha\Resource\ParameterHydrator;
 use Kix\Apiranha\ResourceDefinitionInterface;
 
 /**
  * Class representing an API request.
- * 
- * This is merely a GuzzleRequest wrapper that translates RESTful methods (that include CGET, for instance) into HTTP
- * methods.
  */
-class Request extends GuzzleRequest
+class Request
 {
     /**
-     * Resource methods map to HTTP methods so that <code>CGET</code> is transformed to <code>GET</code>. All other
-     * methods map one-to-one.
+     * @var Endpoint
      */
-    private static $methodMap = [
-        ResourceDefinitionInterface::METHOD_CGET => 'GET',
-        ResourceDefinitionInterface::METHOD_DELETE => 'DELETE',
-        ResourceDefinitionInterface::METHOD_GET => 'GET',
-        ResourceDefinitionInterface::METHOD_POST => 'POST',
-        ResourceDefinitionInterface::METHOD_PUT => 'PUT',
-    ];
+    private $endpoint;
+    
+    /**
+     * @var ResourceDefinitionInterface
+     */
+    private $resource;
+
+    /**
+     * @var array
+     */
+    private $parameters;
 
     /**
      * Request constructor.
      *
-     * @param null|string $method
-     * @param null|\Psr\Http\Message\UriInterface|string $uri
-     * @param array $headers
-     * @param null $body
-     * @param string $protocolVersion
+     * @param ResourceDefinitionInterface $resource
+     * @param array                       $parameters
      */
-    public function __construct($method, $uri, array $headers = [], $body = null, $protocolVersion = '1.1')
+    public function __construct(Endpoint $endpoint, ResourceDefinitionInterface $resource, array $parameters)
     {
-        parent::__construct(self::$methodMap[$method], $uri, $headers, $body, $protocolVersion);
+        $this->endpoint = $endpoint;
+        $this->resource = $resource;
+        $this->parameters = ParameterHydrator::hydrateParameters($resource->getParameters(), $parameters);
+    }
+
+    /**
+     * @return Endpoint
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
+    }
+    
+    /**
+     * @return ResourceDefinitionInterface
+     */
+    public function getResource()
+    {
+        return $this->resource;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
     }
 }

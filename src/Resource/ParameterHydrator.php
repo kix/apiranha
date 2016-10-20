@@ -22,6 +22,10 @@ class ParameterHydrator
         $i = 0;
         $parameters = [];
 
+        if (!count($definitions)) {
+            return $parameters;
+        }
+
         foreach ($definitions as $parameterDefinition) {
             if (in_array($parameterDefinition->getType(), InvalidParameterException::$scalarTypes, true)) {
                 $validator = 'is_'.$parameterDefinition->getType();

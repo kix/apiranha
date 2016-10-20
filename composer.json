@@ -25,11 +25,14 @@
         "symfony/serializer": "@stable",
         "jms/serializer": "@stable",
         "nikic/php-parser": "@stable",
-        "guzzlehttp/guzzle": "@stable"
+        "guzzlehttp/guzzle": "@stable",
+        "php-http/httplug": "@stable"
     },
     "suggest": {
         "nikic/php-parser": "Allows dumping definitions to PHP code",
         "symfony/serializer": "Adds support for (de)serializing common formats",
-        "jms/serializer": "Adds support for (de)serializing common formats"
+        "jms/serializer": "Adds support for (de)serializing common formats",
+        "guzzlehttp/guzzle": "To use Guzzle as HTTP client",
+        "php-http/httplug": "To use HTTPlug as HTTP client"
     }
 }

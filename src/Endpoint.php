@@ -155,8 +155,5 @@ class Endpoint
                 return $listener->process($response, $resource);
             }
         }
-
-        throw new \RuntimeException('No hydrators :(');
     }
-
 }
