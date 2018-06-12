@@ -154,7 +154,7 @@ class AnnotationDriver
                         throw new RuntimeException(sprintf(
                             'Could not determine a type for parameter `%s` of method `%s`',
                             $parameter->getName(),
-                            $methodRefl->getDeclaringClass().'::'.$methodRefl->getName()
+                            $methodRefl->getDeclaringClass()->getName().'::'.$methodRefl->getName()
                         ));
                     }
 
