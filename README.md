@@ -6,6 +6,10 @@ Apiranha is a library that makes consuming APIs easier and faster. Some of the i
 [![Code Climate](https://codeclimate.com/github/kix/apiranha/badges/gpa.svg)](https://codeclimate.com/github/kix/apiranha)
 [![Coverage Status](https://coveralls.io/repos/github/kix/apiranha/badge.svg?branch=master)](https://coveralls.io/github/kix/apiranha?branch=master)
 
+## Example usage
+
+A complete example can be found at `examples/`. See [`ExampleCommand`](https://github.com/kix/apiranha/blob/master/examples/Command/ExampleCommand.php) and [`BuilderExampleCommand`](https://github.com/kix/apiranha/blob/master/examples/Command/BuilderExampleCommand.php).
+
 ## Quick start
 
 Make sure you have Composer installed, then run this in your project folder:
@@ -13,6 +17,7 @@ Make sure you have Composer installed, then run this in your project folder:
 ```
 composer require kix/apiranha='dev-master'
 ```
+
 
 Next, declare some API endpoints using annotations:
 
