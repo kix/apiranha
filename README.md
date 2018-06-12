@@ -2,7 +2,7 @@
 
 Apiranha is a library that makes consuming APIs easier and faster. Some of the inspiration for Apiranha comes from [Retrofit](square.github.io/retrofit/)
 
-[![Travis Ci](https://travis-ci.org/kix/apiranha.svg?branch=master)](https://travis-ci.org/Fakerino/Fakerino)
+[![Travis Ci](https://travis-ci.org/kix/apiranha.svg?branch=master)](https://travis-ci.org/kix/apiranha)
 [![Code Climate](https://codeclimate.com/github/kix/apiranha/badges/gpa.svg)](https://codeclimate.com/github/kix/apiranha)
 [![Coverage Status](https://coveralls.io/repos/github/kix/apiranha/badge.svg?branch=master)](https://coveralls.io/github/kix/apiranha?branch=master)
 
