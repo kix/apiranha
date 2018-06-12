@@ -24,5 +24,7 @@ class EndpointTest extends \PHPUnit\Framework\TestCase
     {
         $adapter = $this->createMock(HttpAdapterInterface::class);
         $endpoint = new Endpoint($adapter, new Router(), 'http://localhost:8000');
+
+        static::assertInstanceOf(Endpoint::class, $endpoint);
     }
 }

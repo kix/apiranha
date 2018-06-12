@@ -24,7 +24,7 @@ interface UserResource
      * @Rest\Returns("Kix\Apiranha\Tests\Mocks\User")
      * @return mixed
      */
-    public function showAction($id);
+    public function showAction(int $id);
 
     /**
      * @Rest\Post("/users")
@@ -35,8 +35,7 @@ interface UserResource
     /**
      * @Rest\Delete("/users/{user.id}")
      * @param User $user
-     * @param string|bool $notNecessary
      * @return mixed
      */
-    public function deleteAction(User $user, $notNecessary = false);
+    public function deleteAction(User $user);
 }

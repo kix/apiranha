@@ -7,8 +7,4 @@ namespace Tests\Kix\Apiranha;
  */
 class ParameterTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     */
-    public function it(){}
 }

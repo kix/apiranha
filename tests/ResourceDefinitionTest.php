@@ -24,6 +24,8 @@ class ResourceDefinitionTest extends \PHPUnit\Framework\TestCase
             '/users',
             User::class
         );
+
+        static::assertInstanceOf(ResourceDefinition::class, $defn);
     }
 
     /**
