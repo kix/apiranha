@@ -8,7 +8,7 @@ use Kix\Apiranha\Exception\UndefinedResourceException;
  * Class UndefinedResourceExceptionTest
  * @covers \Kix\Apiranha\Exception\UndefinedResourceException
  */
-class UndefinedResourceExceptionTest extends \PHPUnit_Framework_TestCase
+class UndefinedResourceExceptionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

@@ -8,14 +8,14 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * Class ApiReponseTest
  */
-class ApiReponseTest extends \PHPUnit_Framework_TestCase
+class ApiReponseTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      */
     public function it_returns_data()
     {
-        $wrapped = $this->getMock(ResponseInterface::class);
+        $wrapped = $this->createMock(ResponseInterface::class);
 
         $data = ['hello' => 'world'];
         $response = new ApiResponse($wrapped, $data);
@@ -28,7 +28,7 @@ class ApiReponseTest extends \PHPUnit_Framework_TestCase
      */
     public function it_proxies_calls_to_wrapped_response()
     {
-        $wrapped = $this->getMock(ResponseInterface::class);
+        $wrapped = $this->createMock(ResponseInterface::class);
         $wrapped->expects(static::once())->method('getBody')->willReturn('body');
 
         $response = new ApiResponse($wrapped, []);

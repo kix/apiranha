@@ -9,7 +9,7 @@ use Kix\Apiranha\Tests\Mocks\User;
 /**
  * Class PropertyAccessCheckTest
  */
-class PropertyAccessCheckTest extends \PHPUnit_Framework_TestCase
+class PropertyAccessCheckTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

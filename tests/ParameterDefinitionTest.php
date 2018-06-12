@@ -8,7 +8,7 @@ use Kix\Apiranha\ParameterDefinition;
 /**
  * @covers \Kix\Apiranha\ParameterDefinition
  */
-class ParameterDefinitionTest extends \PHPUnit_Framework_TestCase
+class ParameterDefinitionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

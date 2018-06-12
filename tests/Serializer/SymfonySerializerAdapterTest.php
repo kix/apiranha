@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Serializer;
 /**
  * Class SymfonySerializerAdapterTest
  */
-class SymfonySerializerAdapterTest extends \PHPUnit_Framework_TestCase
+class SymfonySerializerAdapterTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -45,7 +45,7 @@ class SymfonySerializerAdapterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_throws_for_already_registered_formats()
     {
-        $serializer = $this->getMock(Serializer::class);
+        $serializer = $this->createMock(Serializer::class);
         $serializer
             ->expects(static::once())
             ->method('supportsDecoding')
@@ -65,7 +65,7 @@ class SymfonySerializerAdapterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_throws_for_formats_not_supported_by_the_serializer()
     {
-        $serializer = $this->getMock(Serializer::class);
+        $serializer = $this->createMock(Serializer::class);
         $serializer
             ->expects(static::once())
             ->method('supportsDecoding')

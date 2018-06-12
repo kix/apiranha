@@ -15,14 +15,14 @@ use Kix\Apiranha\ResourceDefinitionInterface;
 /**
  * Class EndpointTest
  */
-class EndpointTest extends \PHPUnit_Framework_TestCase
+class EndpointTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      */
     public function it_is_initializable()
     {
-        $adapter = $this->getMock(HttpAdapterInterface::class);
+        $adapter = $this->createMock(HttpAdapterInterface::class);
         $endpoint = new Endpoint($adapter, new Router(), 'http://localhost:8000');
     }
 }

@@ -10,7 +10,7 @@ use Kix\Apiranha\Tests\Mocks\Offer;
 /**
  * Class ReflectionHydratorTest
  */
-class ReflectionHydratorTest extends \PHPUnit_Framework_TestCase
+class ReflectionHydratorTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

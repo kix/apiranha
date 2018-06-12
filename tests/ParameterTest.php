@@ -5,7 +5,7 @@ namespace Tests\Kix\Apiranha;
 /**
  * Class ParameterTest
  */
-class ParameterTest extends \PHPUnit_Framework_TestCase
+class ParameterTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

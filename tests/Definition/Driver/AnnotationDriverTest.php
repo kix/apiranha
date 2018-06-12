@@ -13,7 +13,7 @@ use Kix\Apiranha\Tests\Mocks\User;
 /**
  * Class AnnotationDriverTest
  */
-class AnnotationDriverTest extends \PHPUnit_Framework_TestCase
+class AnnotationDriverTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -100,6 +100,5 @@ class AnnotationDriverTest extends \PHPUnit_Framework_TestCase
         }
 
         $driver = new AnnotationDriver();
-        //var_dump($driver->createDefinitions(OfferResource::class));
     }
 }

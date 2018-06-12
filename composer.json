@@ -22,7 +22,7 @@
         "symfony/property-access": "@stable"
     },
     "require-dev": {
-        "phpunit/phpunit": "@stable",
+        "phpunit/phpunit": "^7.2",
         "symfony/serializer": "@stable",
         "jms/serializer": "@stable",
         "nikic/php-parser": "@stable",

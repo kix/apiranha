@@ -31,6 +31,4 @@ class TestApplication extends Application
             ]
         );
     }
-
-
 }

@@ -7,7 +7,7 @@ use Kix\Apiranha\Exception\InvalidParameterException;
 /**
  * Class InvalidParameterExceptionTest
  */
-class InvalidParameterExceptionTest extends \PHPUnit_Framework_TestCase
+class InvalidParameterExceptionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

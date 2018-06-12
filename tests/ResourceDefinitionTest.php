@@ -11,7 +11,7 @@ use Kix\Apiranha\Tests\Mocks\User;
 /**
  * @covers \Kix\Apiranha\ResourceDefinition  
  */
-class ResourceDefinitionTest extends \PHPUnit_Framework_TestCase
+class ResourceDefinitionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

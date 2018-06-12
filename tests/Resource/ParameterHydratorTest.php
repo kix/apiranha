@@ -11,7 +11,7 @@ use Kix\Apiranha\Tests\Mocks\User;
 /**
  * Class ParameterHydratorTest
  */
-class ParameterHydratorTest extends \PHPUnit_Framework_TestCase
+class ParameterHydratorTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
