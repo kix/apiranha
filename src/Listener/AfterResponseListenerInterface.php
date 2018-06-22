@@ -2,6 +2,7 @@
 
 namespace Kix\Apiranha\Listener;
 
+use Kix\Apiranha\Response\ApiResponse;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -18,5 +19,5 @@ interface AfterResponseListenerInterface
      * @param ResponseInterface $response
      * @return ResponseInterface
      */
-    public function process(RequestInterface $request, ResponseInterface $response);
+    public function process(RequestInterface $request, ResponseInterface $response): ?ApiResponse;
 }

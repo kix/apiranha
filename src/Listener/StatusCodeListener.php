@@ -2,6 +2,7 @@
 
 namespace Kix\Apiranha\Listener;
 
+use Kix\Apiranha\Response\ApiResponse;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -17,7 +18,7 @@ class StatusCodeListener implements AfterResponseListenerInterface
      * @throws \Exception
      * @return void
      */
-    public function process(RequestInterface $request, ResponseInterface $response)
+    public function process(RequestInterface $request, ResponseInterface $response): ?ApiResponse
     {
         if ($response->getStatusCode() > 400) {
             throw new \RuntimeException(sprintf(

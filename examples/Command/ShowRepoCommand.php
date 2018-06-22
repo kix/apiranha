@@ -9,11 +9,10 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
 /**
- * Class BuilderExampleCommand
+ * Class ShowRepoCommand
  */
-class BuilderExampleCommand extends Command
+class ShowRepoCommand extends Command
 {
     const NAME = 'github:show-repo';
 

@@ -2,8 +2,9 @@
 
 namespace Kix\Apiranha\Examples;
 
-use Kix\Apiranha\Examples\Command\BuilderExampleCommand;
-use Kix\Apiranha\Examples\Command\ExampleCommand;
+use Kix\Apiranha\Examples\Command\NonAnnotatedListReposCommand;
+use Kix\Apiranha\Examples\Command\ShowRepoCommand;
+use Kix\Apiranha\Examples\Command\ListReposCommand;
 use Symfony\Component\Console\Application;
 
 /**
@@ -26,8 +27,9 @@ class TestApplication extends Application
         return array_merge(
             parent::getDefaultCommands(),
             [
-                new ExampleCommand(),
-                new BuilderExampleCommand(),
+                new ListReposCommand(),
+                new NonAnnotatedListReposCommand(),
+                new ShowRepoCommand(),
             ]
         );
     }

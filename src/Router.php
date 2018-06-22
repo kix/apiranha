@@ -10,6 +10,10 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 class Router
 {
     /**
+     * Generates a URI for the given resource, injecting parameters where necessary.
+     *
+     * Parameters that do not have corresponding placeholders in the URL will be appended to the query string.
+     *
      * @param ResourceDefinitionInterface $resourceDefinition
      * @param array                       $parameters
      * @return string

@@ -32,7 +32,7 @@ class ContentTypeListenener implements AfterResponseListenerInterface
      * @param ResponseInterface $response
      * @return ApiResponse
      */
-    public function process(RequestInterface $request, ResponseInterface $response)
+    public function process(RequestInterface $request, ResponseInterface $response): ?ApiResponse
     {
         $header = explode(';', $response->getHeader('Content-type')[0]);
 

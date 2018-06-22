@@ -11,5 +11,5 @@ interface HttpAdapterInterface
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public function send(RequestInterface $request);
+    public function send(RequestInterface $request): ResponseInterface;
 }

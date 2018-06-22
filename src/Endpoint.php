@@ -9,6 +9,7 @@ use Kix\Apiranha\Request\Request;
 use Kix\Apiranha\Listener\AfterResponseListenerInterface;
 use Kix\Apiranha\Exception\UndefinedResourceException;
 use Kix\Apiranha\Resource\ParameterHydrator;
+use Kix\Apiranha\Response\ApiResponse;
 
 /**
  * Represents an API endpoint.
@@ -70,6 +71,7 @@ class Endpoint
      * </pre>
      *
      * @param HttpAdapterInterface $httpAdapter
+     * @param Router $router
      * @param string $baseUrl
      */
     public function __construct(HttpAdapterInterface $httpAdapter, Router $router, $baseUrl)
@@ -131,7 +133,7 @@ class Endpoint
             /** @var callable $listener */
             if (is_callable($listener)) {
                 $request = $listener($request);
-            } 
+            }
         }
 
         $response = $this->httpAdapter->send($request);
@@ -143,7 +145,7 @@ class Endpoint
                 $result = $listener->process($request, $response);
             }
             
-            if ($result) {
+            if ($result instanceof ApiResponse) {
                 $response = $result;
             }
         }

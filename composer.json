@@ -17,6 +17,7 @@
         }
     },
     "require": {
+        "php": "^7.1",
         "guzzlehttp/guzzle": "^6.2",
         "doctrine/annotations": "@stable",
         "symfony/property-access": "@stable"
@@ -33,6 +34,7 @@
     "suggest": {
         "nikic/php-parser": "Allows dumping definitions to PHP code",
         "symfony/serializer": "Adds support for (de)serializing common formats",
-        "jms/serializer": "Adds support for (de)serializing common formats"
+        "jms/serializer": "Adds support for (de)serializing common formats",
+        "guzzlehttp/guzzle": "An HTTP client that's supported out-of-the-box"
     }
 }

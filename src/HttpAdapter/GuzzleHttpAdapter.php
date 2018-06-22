@@ -3,6 +3,7 @@
 namespace Kix\Apiranha\HttpAdapter;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -25,9 +26,10 @@ class GuzzleHttpAdapter implements HttpAdapterInterface
 
     /**
      * @param RequestInterface $request
+     * @throws GuzzleException
      * @return ResponseInterface
      */
-    public function send(RequestInterface $request)
+    public function send(RequestInterface $request): ResponseInterface
     {
         return $this->client->send($request);
     }
